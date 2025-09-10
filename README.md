@@ -66,3 +66,8 @@ Latest improvements and bug fixes.
 ## Update 69
 
 Latest improvements and bug fixes.
+
+
+## Update 72
+
+Latest improvements and bug fixes.
