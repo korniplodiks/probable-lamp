@@ -1,33 +1,30 @@
-// Probable Lamp - Code Improvement
+// Probable Lamp - Bug Fix
 // Probable Lamp
 
-const logger = require('./logger');
-
 /**
- * Optimized algorithm with better performance
+ * Safely divide two numbers with error handling
  */
-function optimizeAlgorithm(data) {
-    return data
-        .filter(item => item.active !== false)
-        .map(item => ({
-            ...item,
-            processed: true
-        }));
+function safeDivide(a, b) {
+    if (b === 0) {
+        throw new Error('Division by zero is not allowed');
+    }
+    return a / b;
 }
 
 /**
- * Extract metadata from object
+ * Parse configuration string with improved error handling
  */
-function extractMetadata(obj) {
-    if (typeof obj !== 'object' || obj === null) {
-        return null;
+function parseConfig(configStr) {
+    if (!configStr) {
+        return {};
     }
     
-    return {
-        id: obj.id,
-        timestamp: obj.timestamp,
-        version: obj.version || '1.0.0'
-    };
+    try {
+        return JSON.parse(configStr);
+    } catch (e) {
+        console.warn(`Warning: Invalid JSON config: ${e.message}`);
+        return {};
+    }
 }
 
-module.exports = { optimizeAlgorithm, extractMetadata };
+module.exports = { safeDivide, parseConfig };
